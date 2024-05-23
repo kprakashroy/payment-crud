@@ -1,40 +1,3 @@
-<?php
-include "db_connection.php";
-
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    
-    $stmt = $conn->prepare("SELECT * FROM `payment_crud` WHERE `username` = ? AND `password` = ?");
-    $stmt->bind_param("ss", $username, $password);
-
-   
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    
-    if ($result->num_rows > 0) {
-
-        $_SESSION['username'] = $username;
-        
-        header("Location: addPayment.php?username=" . urlencode($username));
-        exit();
-    } else {
-        echo "Invalid username or password.";
-    }
-
-    
-    $stmt->close();
-}
-
-
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +55,7 @@ $conn->close();
 <body>
   <div class="login-form">
     <h2 class="text-center mb-4">Login</h2>
-    <form action="" method="post">
+    <form id = "loginForm"  method="post">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username" required>
@@ -111,15 +74,18 @@ $conn->close();
 
 
 
-  <!-- <script>
+  <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault(); 
 
       
       const formData = new FormData(this);
+      console.log(formData)
 
+      const username = document.getElementById('username').value;
+      console.log(username,'----')
       
-      fetch('payment_crud/login.php', {
+      fetch('loginhandle.php/login', {
         method: 'POST',
         body: formData
       })
@@ -127,6 +93,8 @@ $conn->close();
       .then(data => {
        
         if (data.success) {
+
+            console.log(data.username);
           
           window.location.href = 'addPayment.php?username=' + encodeURIComponent(data.username);
         } else {
@@ -135,8 +103,8 @@ $conn->close();
         }
       })
       .catch(error => console.error('Error:', error));
-    });
-  </script> -->
+     });
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

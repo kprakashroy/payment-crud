@@ -106,7 +106,7 @@ $total_amount = $total_amount_result->fetch_assoc()['total'];
                 <noscript><input type="submit" value="Submit" class="btn btn-primary"></noscript>
             </form>
             <div>
-                <strong>Total Amount: </strong> $<?php echo number_format($total_amount, 2); ?>
+                <strong>Total Amount: </strong> <?php echo number_format($total_amount, 2); ?>
             </div>
         </div>
         <table class="table table-striped text-center">

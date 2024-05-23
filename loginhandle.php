@@ -34,6 +34,39 @@ class LoginHandler {
         $stmt->close();
         $this->conn->close();
     }
+
+    public function handleAddPayment() {
+
+        
+
+        session_start();
+    
+            $amount = $_POST['amount'];
+            $username = $_SESSION['username'];
+        
+            
+            $stmt = $this->conn->prepare("INSERT INTO `payment_added` (`amount`, `date`, `username`) VALUES ( ?, CURRENT_TIMESTAMP(), ?)");
+            $stmt->bind_param("ss", $amount, $username);
+        
+           
+            
+        
+            
+            if ($stmt->execute()) {
+        
+                
+                echo json_encode(["success" => true]);
+                // header("Location: list.php?username=" . urlencode($username));
+                exit();
+            } else {
+                http_response_code(401); 
+            echo json_encode(["success" => false, "message" => "Payment is not successfull"]);
+            }
+        
+            
+            $stmt->close();
+        }
+    
 }
 
 
@@ -52,11 +85,22 @@ function route($url, $callback) {
 
 
 function handleLogin() {
+    //echo json_encode(["success" => true, "username" => "krishna"]);
     global $loginHandler;
     $loginHandler->handleLogin();
 }
 
+function handleAddPayment() {
+    //echo json_encode(["success" => true, "username" => "krishna"]);
+    global $loginHandler;
+    $loginHandler->handleAddPayment();
+}
 
-route('/payment_crud/login.php', 'handleLogin');
+
+route('/payment_crud/loginhandle.php/login', 'handleLogin');
+
+route('/payment_crud/loginhandle.php/addPayment', 'handleAddPayment');
+
+
 
 ?>
