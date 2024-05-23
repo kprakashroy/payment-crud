@@ -69,22 +69,22 @@ $total_amount = $total_amount_result->fetch_assoc()['total'];
         .table thead th {
             background-color: #007bff;
             color: white;
-            padding: 12px 20px; /* Increased padding for column headings */
-            font-size: 1.2rem; /* Increased font size for column headings */
-            white-space: nowrap; /* Prevent wrapping of column headings */
+            padding: 12px 20px; 
+            font-size: 1.2rem; 
+            white-space: nowrap; 
         }
         .table th, .table td {
-            padding: 12px 20px; /* Increased padding for table cells */
+            padding: 12px 20px; 
         }
         .table thead th:first-child {
-            border-top-left-radius: 10px; /* Rounded corners for first column heading */
+            border-top-left-radius: 10px; 
         }
         .table thead th:last-child {
-            border-top-right-radius: 10px; /* Rounded corners for last column heading */
+            border-top-right-radius: 10px; 
         }
         .table tbody tr:last-child td {
-            border-bottom-left-radius: 10px; /* Rounded corners for last row */
-            border-bottom-right-radius: 10px; /* Rounded corners for last row */
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px; 
         }
         .btn-secondary {
             margin: 0 5px;

@@ -1,6 +1,6 @@
 <?php
 
-class LoginHandler {
+class CrudHandler {
     private $conn;
 
     public function __construct($conn) {
@@ -73,7 +73,7 @@ class LoginHandler {
 include "db_connection.php";
 
 
-$loginHandler = new LoginHandler($conn);
+$handler = new CrudHandler($conn);
 
 
 function route($url, $callback) {
@@ -85,15 +85,15 @@ function route($url, $callback) {
 
 
 function handleLogin() {
-    //echo json_encode(["success" => true, "username" => "krishna"]);
-    global $loginHandler;
-    $loginHandler->handleLogin();
+    
+    global $handler;
+    $handler->handleLogin();
 }
 
 function handleAddPayment() {
-    //echo json_encode(["success" => true, "username" => "krishna"]);
-    global $loginHandler;
-    $loginHandler->handleAddPayment();
+    
+    global $handler;
+    $handler->handleAddPayment();
 }
 
 
