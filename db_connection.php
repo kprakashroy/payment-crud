@@ -12,6 +12,6 @@ if(!$conn){
     die("connection failed");
 }
 
-// echo "conected successfully";
+
 
 ?>
