@@ -172,6 +172,10 @@ $total_amount = $total_amount_result->fetch_assoc()['total'];
             }
             ?>
         </div>
+
+        <div>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='paymentPage.php'">Back</button>
+        </div>
     </div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
