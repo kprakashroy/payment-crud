@@ -97,9 +97,9 @@ function handleAddPayment() {
 }
 
 
-route('/payment_crud/loginhandle.php/login', 'handleLogin');
+route('/payment_crud/controller.php/login', 'handleLogin');
 
-route('/payment_crud/loginhandle.php/addPayment', 'handleAddPayment');
+route('/payment_crud/controller.php/addPayment', 'handleAddPayment');
 
 
 

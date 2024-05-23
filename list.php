@@ -52,7 +52,7 @@ $total_amount = $total_amount_result->fetch_assoc()['total'];
     <title>Amount List with Pagination</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
+         body {
             background-color: #f8f9fa;
             display: flex;
             justify-content: center;
@@ -69,6 +69,22 @@ $total_amount = $total_amount_result->fetch_assoc()['total'];
         .table thead th {
             background-color: #007bff;
             color: white;
+            padding: 12px 20px; /* Increased padding for column headings */
+            font-size: 1.2rem; /* Increased font size for column headings */
+            white-space: nowrap; /* Prevent wrapping of column headings */
+        }
+        .table th, .table td {
+            padding: 12px 20px; /* Increased padding for table cells */
+        }
+        .table thead th:first-child {
+            border-top-left-radius: 10px; /* Rounded corners for first column heading */
+        }
+        .table thead th:last-child {
+            border-top-right-radius: 10px; /* Rounded corners for last column heading */
+        }
+        .table tbody tr:last-child td {
+            border-bottom-left-radius: 10px; /* Rounded corners for last row */
+            border-bottom-right-radius: 10px; /* Rounded corners for last row */
         }
         .btn-secondary {
             margin: 0 5px;

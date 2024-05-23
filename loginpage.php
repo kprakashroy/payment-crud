@@ -12,6 +12,7 @@
       justify-content: center;
       height: 100vh;
       background-color: #e9ecef;
+      margin: 0;
     }
     .login-form {
       width: 100%;
@@ -23,39 +24,36 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     .login-form h2 {
-      font-size: 1.75rem;
+      font-size: 2rem;
       margin-bottom: 1.5rem;
+      text-align: center;
     }
     .form-control {
-      margin-bottom: 20px;
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+    .form-label {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
     }
     .btn-login {
-      width: 48%;
+      font-size: 1.125rem;
+      width: 100%;
       background-color: #007bff;
       border: none;
+      color: white;
+      padding: 0.75rem;
     }
     .btn-login:hover {
       background-color: #0056b3;
-    }
-    .btn-register {
-      width: 48%;
-      background-color: #6c757d;
-      border: none;
-    }
-    .btn-register:hover {
-      background-color: #5a6268;
-    }
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="login-form">
-    <h2 class="text-center mb-4">Login</h2>
-    <form id = "loginForm"  method="post">
+    <h2>Login</h2>
+    <form id="loginForm" method="post">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username" required>
@@ -64,12 +62,13 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" required>
       </div>
-      <div class="button-group">
-        <button type="submit" class="btn btn-login">Login</button>
-        <button type="button" class="btn btn-register" onclick="window.location.href='/register.php'">Register</button>
-      </div>
+      <button type="submit" class="btn btn-login">Login</button>
     </form>
   </div>
+</body>
+</html>
+
+  
 
 
 
@@ -85,7 +84,7 @@
       const username = document.getElementById('username').value;
       console.log(username,'----')
       
-      fetch('loginhandle.php/login', {
+      fetch('controller.php/login', {
         method: 'POST',
         body: formData
       })
@@ -96,7 +95,7 @@
 
             console.log(data.username);
           
-          window.location.href = 'addPayment.php?username=' + encodeURIComponent(data.username);
+          window.location.href = 'paymentPage.php?username=' + encodeURIComponent(data.username);
         } else {
           
           alert(data.message);
